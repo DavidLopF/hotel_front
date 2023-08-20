@@ -1,0 +1,61 @@
+<div class="row center animate__animated animate__backInDown">
+    <mat-card class="card">
+        <mat-card-content>
+            <div class="row">
+                <div class="col s6 left-align">
+                    <h1>Informacion Hotel {{selectedHotel.ubication}} </h1>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row description">
+                <div class="col s5">
+                    <p>Hotel con capacidad de {{selectedHotel.capacity}} personas (actualmente) estas se dividen en
+                        {{roomsStandard.length}} tipo estandar, {{roomsVip.length}} tipo vip y {{roomsPremium.length}}
+                        tipo premium.
+                    </p>
+                    <div class="row table">
+                        <table mat-table [dataSource]="prices" class="mat-elevation-z ">
+
+                            <!--- Note that these columns can be defined in any order.
+                                  The actual rendered columns are set as a property on the row definition" -->
+
+                            <ng-container matColumnDef="id">
+                                <th mat-header-cell *matHeaderCellDef> No. </th>
+                                <td mat-cell *matCellDef="let element"> {{element.typeId}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="tipo">
+                                <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                            </ng-container>
+
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="precio">
+                                <th mat-header-cell *matHeaderCellDef> Precio </th>
+                                <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="cantidad">
+                                <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <div class="input-field col s6">
+                                        <input placeholder="Cantidad" id={{element.typeId}} type="number"
+                                            (input)="validateNumberInput()" class="validate">
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="columnsPrices"></tr>
+                            <tr mat-row *matRowDef="let row; columns: columnsPrices;"></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col s7">
+                    <img class="img-hotel" mat-card-xl-image src={{selectedHotel.imgUrl}}>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <button mat-raised-button color="primary" class="button-reserve" *ngIf="showButton" >Reservar</button>
+        </mat-card-content>
+    </mat-card>
+</div>

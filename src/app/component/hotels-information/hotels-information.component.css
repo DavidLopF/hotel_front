@@ -1,0 +1,28 @@
+.card {
+    width: 85%;
+    
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avalibles{
+    color: #AACBD2 ;
+}
+
+.hotels{
+    margin-top: 3%;
+}
+
+.img-hotel{
+    margin-bottom: 3%;
+    border-radius: 10px;
+    margin-left: 6%;
+}
+
+.description{
+    margin-top: 5%;
+}
